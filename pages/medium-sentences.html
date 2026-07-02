@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medium Sentences Practice | Sakura JP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-japan sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html"><span class="circle"></span> Sakura JP</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        style="background:#fff;">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="small-sentences.html">Small Sentences</a></li>
+          <li class="nav-item"><a class="nav-link active" href="medium-sentences.html">Medium Sentences</a></li>
+          <li class="nav-item"><a class="nav-link" href="paragraph-practice.html">Paragraph</a></li>
+          <li class="nav-item"><a class="nav-link" href="../about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1><i class="bi bi-chat-square-text me-2"></i>Medium Sentences Practice</h1>
+      <p class="mb-0">நடுத்தர வாக்கியங்கள் பயிற்சி — Translate longer Tamil sentences into Japanese.</p>
+    </div>
+  </header>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-semibold text-muted">Question <span id="qNum">1</span> of <span id="qTotal">6</span></span>
+            <span class="fw-semibold text-muted">Score: <span id="scoreDisplay">0</span></span>
+          </div>
+          <div class="progress-track">
+            <div class="bar" id="progressBar" style="width:16%;"></div>
+          </div>
+
+          <div class="practice-box">
+            <h5 class="text-muted mb-2"><i class="bi bi-translate me-1"></i>Translate this Tamil sentence into Japanese:
+            </h5>
+            <div class="tamil-sentence" id="tamilText">Loading...</div>
+            <p class="text-muted small" id="englishHint"></p>
+
+            <label class="form-label fw-semibold mt-2">Your Japanese Answer:</label>
+            <textarea class="answer-input jp" id="userAnswer" rows="2" placeholder="ここに にほんごで かいて ください"></textarea>
+
+            <div class="action-row">
+              <button class="btn-japan" id="checkBtn"><i class="bi bi-check2-circle me-1"></i>Check Answer</button>
+              <button class="btn-outline-japan" id="skipBtn"><i class="bi bi-skip-forward me-1"></i>Skip</button>
+              <button class="btn-outline-japan" id="nextBtn" style="display:none;">Next Question <i
+                  class="bi bi-arrow-right"></i></button>
+            </div>
+
+            <div class="result-box" id="resultBox">
+              <h5 id="resultTitle"></h5>
+              <div id="resultBody"></div>
+            </div>
+          </div>
+
+          <div class="info-card p-4 reveal">
+            <h5 class="fw-bold" style="color:var(--primary-dark);"><i class="bi bi-lightbulb me-2"></i>Tips for Medium
+              Sentences / குறிப்புகள்</h5>
+            <p class="text-muted mb-0">Medium sentences often combine multiple grammar points — time expressions,
+              particles for direction/means, and verb tenses. Read the English meaning hint if you get stuck, then check
+              the detailed word-by-word breakdown after submitting your answer.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5><span class="jp">桜</span> Sakura JP</h5>
+          <p class="text-muted">A simple, friendly way to learn spoken Japanese from Tamil.</p>
+        </div>
+        <div class="col-md-2">
+          <h5>Practice</h5>
+          <a href="small-sentences.html">Small Sentences</a>
+          <a href="medium-sentences.html">Medium Sentences</a>
+          <a href="paragraph-practice.html">Paragraph Practice</a>
+        </div>
+        <div class="col-md-3">
+          <h5>Company</h5>
+          <a href="../about.html">About Us</a>
+          <a href="../contact.html">Contact</a>
+          <a href="../privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="col-md-3">
+          <h5>Get In Touch</h5>
+          <a href="mailto:hello@sakurajp.example"><i class="bi bi-envelope me-2"></i>hello@sakurajp.example</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sakura JP — Spoken Japanese Class. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/practice-engine.js"></script>
+  <script src="../js/data-medium.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      let currentIndex = 0;
+      let score = 0;
+      let order = mediumSentences.map((_, i) => i);
+      order.sort(() => Math.random() - 0.5);
+
+      const qNum = document.getElementById('qNum');
+      const qTotal = document.getElementById('qTotal');
+      const scoreDisplay = document.getElementById('scoreDisplay');
+      const progressBar = document.getElementById('progressBar');
+      const tamilText = document.getElementById('tamilText');
+      const englishHint = document.getElementById('englishHint');
+      const userAnswer = document.getElementById('userAnswer');
+      const checkBtn = document.getElementById('checkBtn');
+      const skipBtn = document.getElementById('skipBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const resultBox = document.getElementById('resultBox');
+      const resultTitle = document.getElementById('resultTitle');
+      const resultBody = document.getElementById('resultBody');
+
+      qTotal.textContent = order.length;
+
+      function loadQuestion() {
+        const q = mediumSentences[order[currentIndex]];
+        tamilText.textContent = q.tamil;
+        englishHint.innerHTML = '<i class="bi bi-info-circle me-1"></i>English meaning: ' + q.english;
+        userAnswer.value = '';
+        userAnswer.disabled = false;
+        resultBox.style.display = 'none';
+        resultBox.className = 'result-box';
+        checkBtn.style.display = 'inline-block';
+        skipBtn.style.display = 'inline-block';
+        nextBtn.style.display = 'none';
+        qNum.textContent = currentIndex + 1;
+        progressBar.style.width = Math.round(((currentIndex) / order.length) * 100) + '%';
+        userAnswer.focus();
+      }
+
+      function showResult() {
+        const q = mediumSentences[order[currentIndex]];
+        const result = checkAnswer(q, userAnswer.value);
+
+        resultBox.style.display = 'block';
+        resultBox.classList.add(result.isCorrect ? 'correct' : 'incorrect');
+
+        if (result.isCorrect) {
+          score++;
+          scoreDisplay.textContent = score;
+          resultTitle.innerHTML = '<i class="bi bi-check-circle-fill text-success me-1"></i>Correct! / சரியானது!';
+        } else {
+          resultTitle.innerHTML = '<i class="bi bi-x-circle-fill text-danger me-1"></i>Not Quite Right / இன்னும் சரியில்லை';
+        }
+
+        let html = '';
+        if (!result.isCorrect) {
+          html += '<p class="fw-semibold mb-1">Your answer (errors highlighted):</p>';
+          html += '<div class="correct-answer-box jp">' + (result.highlightedUserAnswer || '<em>No answer entered</em>') + '</div>';
+        }
+        html += '<p class="fw-semibold mb-1 mt-2">Correct Japanese sentence:</p>';
+        html += '<div class="correct-answer-box jp">' + result.correctAnswer + '</div>';
+
+        html += '<p class="fw-semibold mb-1 mt-3">Explanation / விளக்கம்:</p>';
+        html += '<ul class="explanation-list">';
+        result.explanations.forEach(exp => {
+          html += `<li><strong>EN:</strong> ${exp.en}<br><strong>TA:</strong> ${exp.ta}</li>`;
+        });
+        html += '</ul>';
+
+        const breakdownDiv = document.createElement('div');
+        renderWordBreakdown(q, breakdownDiv);
+        html += breakdownDiv.innerHTML;
+
+        resultBody.innerHTML = html;
+
+        checkBtn.style.display = 'none';
+        skipBtn.style.display = 'none';
+        nextBtn.style.display = 'inline-block';
+        userAnswer.disabled = true;
+        progressBar.style.width = Math.round(((currentIndex + 1) / order.length) * 100) + '%';
+      }
+
+      checkBtn.addEventListener('click', showResult);
+
+      skipBtn.addEventListener('click', function () {
+        currentIndex = (currentIndex + 1) % order.length;
+        if (currentIndex === 0) { order.sort(() => Math.random() - 0.5); }
+        loadQuestion();
+      });
+
+      nextBtn.addEventListener('click', function () {
+        currentIndex = (currentIndex + 1) % order.length;
+        if (currentIndex === 0) { order.sort(() => Math.random() - 0.5); }
+        loadQuestion();
+      });
+
+      loadQuestion();
+    })();
+  </script>
+</body>
+
+</html>
